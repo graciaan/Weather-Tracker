@@ -5,6 +5,7 @@ var searchHistory = $(".history");
 
 var cityArray =JSON.parse(localStorage.getItem('savedCity')) || [];
 
+//saves searched city 
 function savedCity() {
   event.preventDefault();
 
@@ -29,6 +30,7 @@ function displayCities() {
 displayCities();
 searchBtn.click(savedCity);
 
+//gets current weather for city
 function getCurrentWeather() {
   var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=" + APIkey;
 
@@ -46,20 +48,6 @@ function getCurrentWeather() {
   .catch(function (error) {
     alert('Unable to connect to API');
   })
-};
-
-//gets 5-day forecast from api
-var getForecast = function (data) {
-  var cityLat = data.coord.lat;
-  var cityLon = data.coord.lon;
-
-  var forecastURL = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + cityLat + '&lon=' + cityLon + '&appid=' + APIkey;
-
-  fetch(forecastURL).then(function (response) {
-    response.json().then(function (data) {
-      console.log(data);
-    });
-  });
 };
 
 var city = $("#city");
@@ -85,9 +73,6 @@ var displayCurrentWeather = function (data) {
   city.append(today, currentIcon);
   currentWeatherEl.append(city, currentTemp, currentWind, currentHumidity);
 };
-
-
-
 
 $(".history").on("click", "li", function () {
   cityInput = $(this).text();
