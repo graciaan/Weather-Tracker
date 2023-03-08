@@ -48,15 +48,15 @@ function getCurrentWeather() {
   })
 };
 
+//gets 5-day forecast from api
 var getForecast = function (data) {
   var cityLat = data.coord.lat;
   var cityLon = data.coord.lon;
 
-  var forecastURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + cityLat + '&lon=' + cityLon + '&exclude=minutely,hourly&appid=' + APIkey;
+  var forecastURL = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + cityLat + '&lon=' + cityLon + '&appid=' + APIkey;
 
   fetch(forecastURL).then(function (response) {
     response.json().then(function (data) {
-      displayForecast(data);
       console.log(data);
     });
   });
@@ -86,3 +86,10 @@ var displayCurrentWeather = function (data) {
   currentWeatherEl.append(city, currentTemp, currentWind, currentHumidity);
 };
 
+
+
+
+$(".history").on("click", "li", function () {
+  cityInput = $(this).text();
+  getCurrentWeather();
+});

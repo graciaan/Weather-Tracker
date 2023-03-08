@@ -13,35 +13,48 @@
       Weather Dashboard
     </h1>
   </header>
+  
   <div class="container-fluid">
     <div class ="row">
+      <!-- search form  -->
       <div class = "col-12 col-md-4 p-3 search-column">
         <form class = "border p-3" id = "search-city">
           <h5>
             Search here!
           </h5>
-          <input id="city" type ="text" class="form-input">
+          <input id="city-input" type ="text" class="form-input">
           <button class = "btn btn-primary" type ="submit">
             Submit!
           </button>
         </form>
         <div class="search-history border" id="search-history-button"></div>
-      </div>
+      </div>      
+      <div id="current-container" class="history"></div>
+    </div>
+
       <div class="col-12 col-md-9">
-        <div class = "row border current-city" id="current-forecast">
+        <div id="current-tab">
           <div class ="col-12">
-            <h3 id="city-searched"></h3>
-            <div id="current-container" class="list-group"></div>
+            <h3 id="city"><span id="today"></span></h3>
+            <div id="current-container">
+              <h2 id="city"><span id="today"></span></h2>
+                <div id="current-weather"></div>
+            </div>
           </div>
         </div>
-        <div class="row border" id="fiveday-forecast">
-          <h2 class="col-12" id="forecast"></h2>
-          <div class="d-flex" id="fiveday-container"></div>
+        
+        <div class="row border">
+          <h2 class="col-12" id="future-dates"></h2>
+          <div class="d-flex" id="forecast"></div>
         </div>
       </div>
-    </div>
+    
   </div>
-  
-  <script src="./script.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="./assets/script.js"></script>
 </body>
 </html>
